@@ -1,0 +1,392 @@
+public class ArrayUtil {
+
+	public static void main(String[] args) {
+
+		// 1
+		int[] n = {1, -5, 6, -4, 9, 0};
+		printPositive(n);
+
+		// 2
+		short[] s = {2, 5, 7};
+		reverseShort(s);
+
+		// 3
+		long[] l = {10, 25, 7, 45, 12};
+		maxLong(l);
+
+		// 4
+		float[] f = {2.5f, 1.2f, 5.7f, 0.5f};
+		minFloat(f);
+
+		// 5
+		int[] m = new int[n.length];
+		copyArray(n, m);
+
+		for (int i = 0; i < m.length; i++) {
+			System.out.println(m[i]);
+		}
+
+		// 6
+		int[] array1 = {1, 5, 6, 4, 7};
+		int[] array2 = {7, 4, 2, 3, 5};
+		int[] array3 = sumArrays(array1, array2);
+
+		for (int i = 0; i < array3.length; i++) {
+			System.out.println(array3[i]);
+		}
+
+		// 7
+		int[] array = {1, 5, 6, 4, 5};
+		System.out.println(countNumber(array, 5));
+
+		// 8
+		int[] numbers = {1, 5, 6, 4};
+		printTriples(numbers);
+
+		// 9
+		int[] sort = {1, 5, 6, 4, 9, 7};
+		sortDescending(sort);
+
+		for (int i = 0; i < sort.length; i++) {
+			System.out.println(sort[i]);
+		}
+
+		// 10
+		int[] odd = {1, 5, 6, 4, 9, 7, 1};
+		evenFirst(odd);
+
+		for (int i = 0; i < odd.length; i++) {
+			System.out.println(odd[i]);
+		}
+
+		// 11
+		double[] realNumbers = {1, 0, 6, 4, 9, 0, 0};
+		double[] result = removeZeros(realNumbers);
+
+		for (int i = 0; i < result.length; i++) {
+			System.out.println(result[i]);
+		}
+
+		// 12
+		int[] sequence = {1, 5, 6, 4, 9, 0, 4, 7, 7, 9, 1};
+		longestIncreasing(sequence);
+
+		// 13
+		int[] binary = {1, 1, 0, 0, 1, 1};
+		System.out.println(binaryToDecimal(binary));
+
+		// 14
+		int[][] matrix = {
+			{1, 2, 3},
+			{4, 5, 6},
+			{7, 8, 9}
+		};
+
+		printAboveDiagonal(matrix);
+
+		// 15
+		transposeMatrix(matrix);
+
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[i].length; j++) {
+				System.out.println(matrix[i][j]);
+			}
+		}
+
+		// 16
+		int[][] matrix2 = {
+			{1, -1, 0, 0},
+			{2, -2, 1, -1},
+			{9, 7, 1, -17}
+		};
+
+		checkRows(matrix2);
+	}
+
+	/*
+	  Գրել method, որը տպում է int[] n array-ի դրական տարրերը․
+	 */
+	public static void printPositive(int[] n) {
+
+		for (int number : n) {
+			if (number > 0) {
+				System.out.println(number);
+			}
+		}
+	}
+
+	/*
+	 Գրել method, որը տպում է short[] s array-ի էլեմենտները հակառակ
+	 հերթականությամբ
+	 Օրինակ՝ ( 257 -> 752)․
+	 */
+	public static void reverseShort(short[] s) {
+
+		for (int i = s.length - 1; i >= 0; i--) {
+			System.out.println(s[i]);
+		}
+	}
+
+	/*
+	  Գրել method, որը գտնում և տպում է long[] l array-ի ամենամեծ տարրը․
+	 */
+	public static void maxLong(long[] l) {
+
+		long max = l[0];
+
+		for (long number : l) {
+			if (number > max) {
+				max = number;
+			}
+		}
+
+		System.out.println(max);
+	}
+
+	/*
+	  Գրել method, որը գտնում և տպում է float[] f array-ի ամենափոքր տարրը․
+	 */
+	public static void minFloat(float[] f) {
+
+		float min = f[0];
+
+		for (float number : f) {
+			if (number < min) {
+				min = number;
+			}
+		}
+
+		System.out.println(min);
+	}
+
+	/*
+	  Գրել method, որը int[] n array-ի էլեմենտները և տեղափոխում int[] m array-ի մեջ։
+	 */
+	public static void copyArray(int[] n, int[] m) {
+
+		for (int i = 0; i < n.length; i++) {
+			m[i] = n[i];
+		}
+	}
+
+	/*
+	  Գրել method, որը ստեղծում է երկու նույն չափը ունեցող array-ներ գումարում է array
+	  -ի համապատասխան էլեմենտները և գրում երրորդ array-ի մեջ։
+	 */
+	public static int[] sumArrays(int[] array1, int[] array2) {
+
+		int[] array3 = new int[array1.length];
+
+		for (int i = 0; i < array1.length; i++) {
+			array3[i] = array1[i] + array2[i];
+		}
+
+		return array3;
+	}
+
+	/*
+	 Գրել method, որը հաշվում է թե քանի անգամ է k թիվը հանդիպել array-ի
+	 Էլեմենտների մեջ։
+	 */
+	public static int countNumber(int[] array, int k) {
+
+		int count = 0;
+
+		for (int number : array) {
+			if (number == k) {
+				count++;
+			}
+		}
+
+		return count;
+	}
+
+	/*
+	  Գրել method, որը տպում է բոլոր չկրկնվող եռյակները array -ի։ Եռյակներում թվերի
+	  դասավորությունը էական չէ:
+	 */
+	public static void printTriples(int[] array) {
+
+		for (int i = 0; i < array.length - 2; i++) {
+			for (int j = i + 1; j < array.length - 1; j++) {
+				for (int k = j + 1; k < array.length; k++) {
+
+					System.out.println("{" + array[i] + ", "
+					                   + array[j] + ", " + array[k] + "}");
+				}
+			}
+		}
+	}
+
+	/*
+	  Դասավորել տրված թվերի հաջորդականության անդամները նվազման կարգով:
+	 */
+	public static void sortDescending(int[] array) {
+
+		for (int i = 0; i < array.length - 1; i++) {
+			for (int j = i + 1; j < array.length; j++) {
+
+				if (array[i] < array[j]) {
+					int temp = array[i];
+					array[i] = array[j];
+					array[j] = temp;
+				}
+			}
+		}
+	}
+
+	/*
+	  Դասավորել տրված ամբողջ թվերի հաջորդականության անդամներն անյպես, որ
+	  վերջում լինեն կենտերը:
+	 */
+	public static void evenFirst(int[] array) {
+
+		int[] temp = new int[array.length];
+		int index = 0;
+
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] % 2 == 0) {
+				temp[index] = array[i];
+				index++;
+			}
+		}
+
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] % 2 != 0) {
+				temp[index] = array[i];
+				index++;
+			}
+		}
+
+		for (int i = 0; i < array.length; i++) {
+			array[i] = temp[i];
+		}
+	}
+
+	/*
+	  Տրված իրական թվերի հաջորդականությունից հեռացնել բոլոր զրոները։
+	 */
+	public static double[] removeZeros(double[] array) {
+
+		int count = 0;
+
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] != 0) {
+				count++;
+			}
+		}
+
+		double[] result = new double[count];
+		int index = 0;
+
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] != 0) {
+				result[index] = array[i];
+				index++;
+			}
+		}
+
+		return result;
+	}
+
+	/*
+	 Տպել տրված թվերի հաջորդականության ամենաերկար աճող
+	 ենթահաջորդականությունը:
+	 */
+	public static void longestIncreasing(int[] array) {
+
+		if (array.length == 0) {
+			return;
+		}
+
+		int maxLength = 1;
+		int length = 1;
+		int start = 0;
+		int maxStart = 0;
+
+		for (int i = 1; i < array.length; i++) {
+
+			if (array[i] >= array[i - 1]) {
+				length++;
+			} else {
+				length = 1;
+				start = i;
+			}
+
+			if (length > maxLength) {
+				maxLength = length;
+				maxStart = start;
+			}
+		}
+
+		for (int i = maxStart; i < maxStart + maxLength; i++) {
+			System.out.println(array[i]);
+		}
+	}
+
+	/*
+	  Ներածել n բնական թիվը 2-ական տեսքով՝ ստանալով 0-ներից ու 1-երից կազմված
+	  զանգված և արտածել n թվի 10-ական ներկայացումը:
+	 */
+	public static int binaryToDecimal(int[] array) {
+
+		int number = 0;
+
+		for (int i = 0; i < array.length; i++) {
+			number = number * 2 + array[i];
+		}
+
+		return number;
+	}
+
+	/*
+	  Տպել տրված մատրիցի գլխավորա անկյունագծից վերև բոլոր տարերը:
+	 */
+	public static void printAboveDiagonal(int[][] matrix) {
+
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = i + 1; j < matrix[i].length; j++) {
+				System.out.println(matrix[i][j]);
+			}
+		}
+	}
+
+	/*
+	 Շրջել տրված ամբողջ թվերի քառակուսային մատրիցը գլխավոր անկյունագծի
+	 նկատմամբ:
+	 */
+	public static void transposeMatrix(int[][] matrix) {
+
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = i + 1; j < matrix.length; j++) {
+
+				int temp = matrix[i][j];
+				matrix[i][j] = matrix[j][i];
+				matrix[j][i] = temp;
+			}
+		}
+	}
+
+	/*
+	  Տրված բնական թվերի քառակուսային մատրիցի համար արտածել YES, եթե նրա
+	  բոլոր տողերի տարրերի գումարը զույգ է։ NO հակառակ դեպքում։
+	 */
+	public static void checkRows(int[][] matrix) {
+
+		for (int i = 0; i < matrix.length; i++) {
+
+			int sum = 0;
+
+			for (int j = 0; j < matrix[i].length; j++) {
+				sum += matrix[i][j];
+			}
+
+			if (sum % 2 != 0) {
+				System.out.println("NO");
+				return;
+			}
+		}
+
+		System.out.println("YES");
+	}
+}
